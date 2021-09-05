@@ -10,7 +10,7 @@ class Customer(BaseModel):
         FEMALE = 'female', _('female')
         OTHERS = 'others', _('others')
 
-    phone_no         = models.CharField(verbose_name='phone_no', max_length=100)
+    phone_no         = models.CharField(verbose_name='phone_no', max_length=100, unique=True)
     first_name       = models.CharField(max_length=100)
     last_name        = models.CharField(max_length=100)
     email            = models.EmailField(verbose_name='email', max_length=100, null=True, blank=True)
@@ -21,7 +21,7 @@ class Customer(BaseModel):
     details          = models.TextField(max_length=500, null=True, blank=True)
     last_checkin     = models.DateTimeField(verbose_name='last checkin', null=True, blank=True)
     last_checkout    = models.DateTimeField(verbose_name='last checkout', null=True, blank=True)
-    last_reservation = models.DateTimeField(verbose_name='last checkout', null=True, blank=True)
+    last_reservation = models.DateTimeField(verbose_name='last reservation', null=True, blank=True)
 
     def __str__(self):
         return f'{self.email} - {self.phone_no}'
