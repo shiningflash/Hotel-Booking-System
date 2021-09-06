@@ -19,9 +19,6 @@ class Customer(BaseModel):
     country          = models.CharField(max_length=100, null=True, blank=True)
     address          = models.CharField(max_length=100, null=True, blank=True)
     details          = models.TextField(max_length=500, null=True, blank=True)
-    last_checkin     = models.DateTimeField(verbose_name='last checkin', null=True, blank=True)
-    last_checkout    = models.DateTimeField(verbose_name='last checkout', null=True, blank=True)
-    last_reservation = models.DateTimeField(verbose_name='last reservation', null=True, blank=True)
 
     def __str__(self):
         return f'{self.email} - {self.phone_no}'
@@ -37,8 +34,5 @@ class Customer(BaseModel):
             models.Index(fields=['email']),
             models.Index(fields=['country']),
             models.Index(fields=['occupation']),
-            models.Index(fields=['gender']),
-            models.Index(fields=['last_checkin']),
-            models.Index(fields=['last_checkout']),
-            models.Index(fields=['last_reservation'])
+            models.Index(fields=['gender'])
         ]

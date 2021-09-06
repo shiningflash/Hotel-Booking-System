@@ -21,7 +21,7 @@ class RoomViewset(mixins.ListModelMixin,
     permission_classes = [permissions.AllowAny, ]
 
     filterset_fields = [
-        'room_no', 'floor_no', 'availability', 'bed_count'
+        'room_no', 'floor_no', 'capacity'
     ]
 
     def get_queryset(self):

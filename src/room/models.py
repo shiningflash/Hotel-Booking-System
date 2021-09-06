@@ -6,8 +6,7 @@ from base.models import BaseModel
 class Room(BaseModel):
     room_no        = models.CharField(verbose_name='phone_no', max_length=100, unique=True)
     floor_no       = models.IntegerField()
-    availability   = models.BooleanField(default=True)
-    bed_count      = models.IntegerField()
+    capacity       = models.IntegerField()
     price          = models.FloatField()
     details        = models.TextField(max_length=500, null=True, blank=True)
 
@@ -22,6 +21,5 @@ class Room(BaseModel):
         indexes = [
             models.Index(fields=['room_no']),
             models.Index(fields=['floor_no']),
-            models.Index(fields=['availability']),
-            models.Index(fields=['bed_count'])
+            models.Index(fields=['capacity'])
         ]

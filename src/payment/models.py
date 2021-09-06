@@ -6,9 +6,17 @@ from booking.models import Booking
 
 
 class Payment(BaseModel):
-    booking               = models.ForeignKey(Booking, on_delete=models.CASCADE)
-    amount                = models.FloatField(default=0.0)
-    payment_method        = models.CharField(max_length=100)
+    class Payment_Method_Choices(models.TextChoices):
+        CASH = 'cash', _('cash')
+        BKASH = 'bkash', _('bkash')
+        NAGAD = 'nagad', _('nagad')
+        UPAY = 'upay', _('upay')
+        CARD = 'card', _('card')
+        OTHERS = 'others', _('others')
+
+    booking            = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    amount             = models.FloatField(default=0.0)
+    payment_method     = models.CharField(max_length=100, choices=Payment_Method_Choices.choices, default=Payment_Method_Choices.CASH)
 
     def __str__(self):
         return f'{self.booking} - {self.amount}'

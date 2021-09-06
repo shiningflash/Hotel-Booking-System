@@ -5,6 +5,9 @@ from rest_framework.response import Response
 from base.helpers import CustomPagination
 from payment.models import Payment
 from .serializers import PaymentSerializer
+from django.utils.decorators import method_decorator
+
+from payment.validation import payment_validation
 
 
 class PaymentViewset(mixins.ListModelMixin,
@@ -35,6 +38,7 @@ class PaymentViewset(mixins.ListModelMixin,
     def list(self, request, *args, **kwargs):
         return super(PaymentViewset, self).list(request, *args, **kwargs)
 
+    @method_decorator(payment_validation)
     def create(self, request, *args, **kwargs):
         data = request.data.copy()
         serializer = self.get_serializer(data=data)

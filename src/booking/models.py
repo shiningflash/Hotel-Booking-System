@@ -8,9 +8,11 @@ from room.models import Room
 class Booking(BaseModel):
     customer_phone_no      = models.CharField(verbose_name='phone_no', max_length=100)
     room                   = models.ForeignKey(Room, on_delete=models.CASCADE)
-    total_price            = models.FloatField(default=0.0)
-    total_discount         = models.FloatField(default=0.0)
-    reserve_time           = models.DateTimeField(verbose_name='last reservation time', null=True, blank=True)
+    price                  = models.FloatField(default=0.0)
+    discounted_price       = models.FloatField(default=0.0)
+    booking_time           = models.DateTimeField(verbose_name='last reservation time')
+    booking_start_time     = models.DateTimeField(verbose_name='booking start time')
+    booking_end_time       = models.DateTimeField(verbose_name='booking end time')
     last_checkin_time      = models.DateTimeField(verbose_name='last checkin time', null=True, blank=True)
     last_checkout_time     = models.DateTimeField(verbose_name='last checkout time', null=True, blank=True)
 
