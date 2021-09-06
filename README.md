@@ -11,6 +11,10 @@
 http://localhost:8010/swagger/
 ```
 
+### [API Documentation (Insomnia)](https://github.com/shiningflash/Hotel-Booking-System/blob/master/Insomnia_Documentation.json)
+
+----------------------
+
 ## Run in Docker
 
 ```
