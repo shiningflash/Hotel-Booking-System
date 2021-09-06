@@ -22,8 +22,8 @@ class BookingViewset(mixins.ListModelMixin,
     lookup_field = 'pk'
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     ordering_fields = ['-created_at']
-    # permission_classes = [permissions.IsAuthenticated, ]
-    permission_classes = [permissions.AllowAny, ]
+    permission_classes = [permissions.IsAuthenticated, ]
+    # permission_classes = [permissions.AllowAny, ]
 
     filterset_fields = [
         'customer_phone_no', 'room'
@@ -51,8 +51,8 @@ class BookingViewset(mixins.ListModelMixin,
 
 
 @api_view(['POST'])
-# @permission_classes([permissions.IsAuthenticated])
-@permission_classes([permissions.AllowAny])
+@permission_classes([permissions.IsAuthenticated])
+# @permission_classes([permissions.AllowAny])
 @method_decorator(payment_check)
 def check_in(request, pk):
     try:
@@ -69,8 +69,8 @@ def check_in(request, pk):
 
 
 @api_view(['POST'])
-# @permission_classes([permissions.IsAuthenticated])
-@permission_classes([permissions.AllowAny])
+@permission_classes([permissions.IsAuthenticated])
+# @permission_classes([permissions.AllowAny])
 @method_decorator(full_payment_check)
 def check_out(request, pk):
     try:

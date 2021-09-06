@@ -2,7 +2,37 @@
 
 -------------------------
 
-## Register New Admin API
+## API Documentation (Swagger)
+
+```
+{{base_url}}/swagger/
+
+# for local docker
+http://localhost:8010/swagger/
+```
+
+## Run in Docker
+
+```
+$ docker-compose up --build
+
+# for migrations and others
+$ docker exec -it hotelbookingsystem_app_1 bash
+:/app# python3 manage.py makemigrations
+:/app# python3 manage.py migrate
+:/app# python3 manage.py createsuperuser
+
+# extra: to avoid proxy bind
+$ sudo netstat -pna | grep 5434
+$ sudo kill <PID>
+
+# run in docker everytime
+$ docker-compose up
+```
+
+## Register New Admin - API
+
+Note: A previous super-user admin can only register for new admin.
 
 ```
 POST {{host}}/api/account/register
@@ -11,7 +41,7 @@ POST {{host}}/api/account/register
 **Request**
 ```
 curl --request POST \
-  --url http://localhost:8000/api/account/register \
+  --url http://localhost:8010/api/account/register \
   --header 'Content-Type: application/json' \
   --data '{
 	"email": "yourname@gmail.com",
@@ -42,7 +72,7 @@ POST {{host}}/api/account/login
 **Request**
 ```
 curl --request POST \
-  --url http://localhost:8000/api/account/login \
+  --url http://localhost:8010/api/account/login \
   --header 'Content-Type: application/json' \
   --data '{
 	"username": "yourname@gmail.com",
@@ -66,7 +96,7 @@ PUT {{host}}/api/account/change-password
 **Request**
 ```
 curl --request PUT \
-  --url http://localhost:8000/api/account/change-password \
+  --url http://localhost:8010/api/account/change-password \
   --header 'Authorization: Token d94ffca2c287885ca57c7265552019d6d01c25f31' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -90,7 +120,7 @@ A secret token will sent to your mail.
 **Request**
 ```
 curl --request POST \
-  --url http://localhost:8000/api/password_reset/ \
+  --url http://localhost:8010/api/password_reset/ \
   --header 'Content-Type: application/json' \
   --data '{
 	"email": "yourname@gmail.com"
@@ -114,7 +144,7 @@ Use the `secret token` that sent to your mail.
 **Request**
 ```
 curl --request POST \
-  --url http://localhost:8000/api/password_reset/confirm/ \
+  --url http://localhost:8010/api/password_reset/confirm/ \
   --header 'Authorization: Token d94ffca2c287885ca555526f9b019d6d01c25f31' \
   --header 'Content-Type: application/json' \
   --data '{
@@ -140,3 +170,7 @@ curl --request POST \
 ```
 { "status": "OK" }
 ```
+
+## API Doc is not yet available (project completed)
+# adding soon
+

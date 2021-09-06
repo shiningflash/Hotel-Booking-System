@@ -4,11 +4,8 @@ from customer.models import Customer
 
 
 class CustomerSerializer(serializers.ModelSerializer):
-    created_by = serializers.ReadOnlyField()
-    updated_by = serializers.ReadOnlyField()
-    created_at = serializers.ReadOnlyField()
-    updated_at = serializers.ReadOnlyField()
-    
+
     class Meta:
         model = Customer
         fields = '__all__'
+        read_only_fields = ('created_by', 'updated_by', 'created_at', 'updated_at')

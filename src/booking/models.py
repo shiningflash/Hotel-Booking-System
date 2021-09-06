@@ -19,6 +19,15 @@ class Booking(BaseModel):
     def __str__(self):
         return f'{self.customer_phone_no}'
 
+    def save(self, *args, **kwargs):
+        try:
+            if kwargs.get('room'):
+                price = Room.objects.get(pk=kwargs.get('room')).price
+                self.price = price
+        except:
+            pass
+        super().save(*args, **kwargs)
+
     class Meta:
         ordering = ['-created_at']
         db_table = 'bookings'

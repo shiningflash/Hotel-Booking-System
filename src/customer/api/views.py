@@ -20,8 +20,8 @@ class CustomerViewset(mixins.ListModelMixin,
     lookup_field = 'pk'
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     ordering_fields = ['-created_at']
-    # permission_classes = [permissions.IsAuthenticated, ]
-    permission_classes = [permissions.AllowAny, ]
+    permission_classes = [permissions.IsAuthenticated, ]
+    # permission_classes = [permissions.AllowAny, ]
 
     filterset_fields = [
         'phone_no', 'first_name', 'last_name', 'email', 'country'

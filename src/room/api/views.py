@@ -17,8 +17,8 @@ class RoomViewset(mixins.ListModelMixin,
     lookup_field = 'pk'
     filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     ordering_fields = ['-created_at']
-    # permission_classes = [permissions.IsAuthenticated, ]
-    permission_classes = [permissions.AllowAny, ]
+    permission_classes = [permissions.IsAuthenticated, ]
+    # permission_classes = [permissions.AllowAny, ]
 
     filterset_fields = [
         'room_no', 'floor_no', 'capacity'
@@ -29,8 +29,8 @@ class RoomViewset(mixins.ListModelMixin,
         return queryset
 
     def perform_create(self, serializer):
-        # serializer.save(created_by=self.request.user.email)
-        serializer.save()
+        serializer.save(created_by=self.request.user.email)
+        # serializer.save()
 
     def list(self, request, *args, **kwargs):
         return super(RoomViewset, self).list(request, *args, **kwargs)
