@@ -8,8 +8,8 @@ from room.models import Room
 class Booking(BaseModel):
     customer_phone_no      = models.CharField(verbose_name='phone_no', max_length=100)
     room                   = models.ForeignKey(Room, on_delete=models.CASCADE)
-    price                  = models.FloatField(default=0.0)
-    discounted_price       = models.FloatField(default=0.0)
+    price                  = models.FloatField()
+    discounted_price       = models.FloatField()
     booking_time           = models.DateTimeField(verbose_name='last reservation time')
     booking_start_time     = models.DateTimeField(verbose_name='booking start time')
     booking_end_time       = models.DateTimeField(verbose_name='booking end time')
@@ -20,12 +20,6 @@ class Booking(BaseModel):
         return f'{self.customer_phone_no}'
 
     def save(self, *args, **kwargs):
-        try:
-            if kwargs.get('room'):
-                price = Room.objects.get(pk=kwargs.get('room')).price
-                self.price = price
-        except:
-            pass
         super().save(*args, **kwargs)
 
     class Meta:

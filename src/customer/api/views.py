@@ -7,7 +7,7 @@ from rest_framework import status, filters, mixins, viewsets
 from rest_framework.response import Response
 from base.helpers import CustomPagination
 from customer.models import Customer
-from .serializers import CustomerSerializer
+from .serializers import CustomerSerializer, CustomerListSerializer
 
 
 class CustomerViewset(mixins.ListModelMixin,
@@ -31,9 +31,13 @@ class CustomerViewset(mixins.ListModelMixin,
         queryset = super().get_queryset()
         return queryset
 
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return CustomerListSerializer
+        return CustomerSerializer
+
     def perform_create(self, serializer):
-        serializer.save()
-        # serializer.save(created_by=self.request.user.email)
+        serializer.save(created_by=self.request.user.email)
 
     def list(self, request, *args, **kwargs):
         return super(CustomerViewset, self).list(request, *args, **kwargs)
@@ -45,3 +49,11 @@ class CustomerViewset(mixins.ListModelMixin,
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def update(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.object.save()
+            return Response('Updated successfully', status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

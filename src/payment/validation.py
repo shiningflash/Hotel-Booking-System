@@ -27,13 +27,13 @@ def payment_validation(func):
                 detail='Please, enter a positive number. Negative not allowed.', code=status.HTTP_400_BAD_REQUEST
             )
 
-        paid_amount = Payment.objects.filter(booking=booking).aggregate(sum=Sum('amount'))
-        due = Booking.objects.get(pk=booking).discounted_price - paid_amount['sum'] if paid_amount['sum'] is not None else 0.0
-
-        if amount > due:
-            raise ValidationError(
-                detail='Payment can not be more than due.', code=status.HTTP_400_BAD_REQUEST
-            )
+        # paid_amount = Payment.objects.filter(pk=booking).aggregate(sum=Sum('amount'))
+        # due = Booking.objects.get(id=booking).discounted_price - paid_amount['sum'] if paid_amount['sum'] is not None else 0.0
+        #
+        # if amount > due:
+        #     raise ValidationError(
+        #         detail=f'Payment can not be more than due. {Booking.objects.get(id=booking).discounted_price} {due}', code=status.HTTP_400_BAD_REQUEST
+        #     )
 
         return func(request, *args, **kwargs)
     return validation

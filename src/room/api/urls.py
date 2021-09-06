@@ -8,7 +8,8 @@ room_list = RoomViewset.as_view({
     'post': 'create'
 })
 room_detail = RoomViewset.as_view({
-    'get': 'retrieve'
+    'get': 'retrieve',
+    'patch': 'update'
 })
 
 urlpatterns = [

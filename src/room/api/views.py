@@ -30,7 +30,6 @@ class RoomViewset(mixins.ListModelMixin,
 
     def perform_create(self, serializer):
         serializer.save(created_by=self.request.user.email)
-        # serializer.save()
 
     def list(self, request, *args, **kwargs):
         return super(RoomViewset, self).list(request, *args, **kwargs)
@@ -42,3 +41,12 @@ class RoomViewset(mixins.ListModelMixin,
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def update(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        serializer = self.get_serializer(data=request.data)
+        if serializer.is_valid():
+            self.object.save()
+            return Response('Updated successfully', status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

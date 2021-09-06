@@ -36,31 +36,9 @@ def booking_validation(func):
                                        booking_end_time__lte=booking_end_time).exists():
                 raise ValidationError(detail=f'Room is not available between the given time range.')
 
-            if required_capacity > Room.objects.get(pk=room).capacity:
-                raise ValidationError(detail=f'Room capacity is not sufficient.')
+            # if required_capacity > Room.objects.get(id=room).capacity:
+            #     raise ValidationError(detail=f'Room capacity is not sufficient.')
         except Room.DoesNotExist:
             return Response({'message': 'Room not found.'}, status=status.HTTP_404_NOT_FOUND)
-        return func(request, *args, **kwargs)
-    return validation
-
-
-def payment_check(func):
-    def validation(request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        paid_amount = Payment.objects.filter(booking=pk).aggregate(sum=Sum('amount'))
-        paid_amount = paid_amount['sum'] if paid_amount['sum'] is not None else 0.0
-        if paid_amount * 2 < Booking.objects.get(pk=pk).discounted_price:
-            raise ValidationError(detail=f'Minimum 50% advance payment required before check in.')
-        return func(request, *args, **kwargs)
-    return validation
-
-
-def full_payment_check(func):
-    def validation(request, *args, **kwargs):
-        pk = kwargs.get('pk')
-        paid_amount = Payment.objects.filter(booking=pk).aggregate(sum=Sum('amount'))
-        paid_amount = paid_amount['sum'] if paid_amount['sum'] is not None else 0.0
-        if paid_amount != Booking.objects.get(pk=pk).discounted_price:
-            raise ValidationError(detail=f'Full payment required before check out.')
         return func(request, *args, **kwargs)
     return validation

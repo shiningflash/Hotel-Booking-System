@@ -8,7 +8,8 @@ customer_list = CustomerViewset.as_view({
     'post': 'create'
 })
 customer_detail = CustomerViewset.as_view({
-    'get': 'retrieve'
+    'get': 'retrieve',
+    'patch': 'update'
 })
 
 urlpatterns = [

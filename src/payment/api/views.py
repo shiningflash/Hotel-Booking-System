@@ -32,8 +32,7 @@ class PaymentViewset(mixins.ListModelMixin,
         return queryset
 
     def perform_create(self, serializer):
-        # serializer.save(created_by=self.request.user.email)
-        serializer.save()
+        serializer.save(created_by=self.request.user.email)
 
     def list(self, request, *args, **kwargs):
         return super(PaymentViewset, self).list(request, *args, **kwargs)
