@@ -180,3 +180,5 @@ deployments
 .vs_code
 
 command.md
+
+.env
