@@ -1,4 +1,4 @@
-# Hotel Management System
+# Hotel Reservation System
 
 -------------------------
 
@@ -11,7 +11,7 @@
 http://localhost:8010/swagger/
 ```
 
-### [API Documentation (Insomnia)](https://github.com/shiningflash/Hotel-Booking-System/blob/master/Insomnia_Documentation.json)
+[![API Documentation Swagger](https://img.shields.io/badge/Docs-API%20Documentation%20Swagger-blue?style=for-the-badge)](https://github.com/shiningflash/django-reservation-system/blob/master/docs/api_documentation.md) [![API Documentation Insomnia](https://img.shields.io/badge/Docs-API%20Documentation%20Insomnia-blue?style=for-the-badge)](https://github.com/shiningflash/django-reservation-system/blob/master/docs/api_documentation_insomnia.json)
 
 ----------------------
 

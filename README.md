@@ -1,8 +1,8 @@
 # Hotel Booking System
 
-A Dockerized Hotel Booking System built with Django, offering REST APIs for user management, room reservations, payments, and check-ins/check-outs. This project provides seamless Swagger and Insomnia documentation support for developers.
+A Dockerized Hotel Reservation System built with Django, offering REST APIs for user management, room reservations, payments, and check-ins/check-outs. This project provides seamless Swagger and Insomnia documentation support for developers.
 
-[![API Documentation](https://img.shields.io/badge/Docs-API%20Documentation-blue?style=for-the-badge)](https://github.com/shiningflash/Hotel-Booking-System/blob/master/docs/api_documentation.md)
+[![API Documentation Swagger](https://img.shields.io/badge/Docs-API%20Documentation%20Swagger-blue?style=for-the-badge)](https://github.com/shiningflash/django-reservation-system/blob/master/docs/api_documentation.md) [![API Documentation Insomnia](https://img.shields.io/badge/Docs-API%20Documentation%20Insomnia-blue?style=for-the-badge)](https://github.com/shiningflash/django-reservation-system/blob/master/docs/api_documentation_insomnia.json)
 
 ---
 
@@ -32,8 +32,8 @@ Ensure the following are installed on your system:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/shiningflash/Hotel-Booking-System.git
-    cd Hotel-Booking-System
+    git clone https://github.com/shiningflash/django-reservation-system.git
+    cd django-reservation-system
     ```
 
 2. Build and run the application using Docker:
@@ -58,7 +58,8 @@ Ensure the following are installed on your system:
 
 ## API Endpoints 
 
-[![API Documentation](https://img.shields.io/badge/Docs-API%20Documentation%20details-blue?style=for-the-badge)](https://github.com/shiningflash/Hotel-Booking-System/blob/master/docs/api_documentation.md)
+[![API Documentation Swagger](https://img.shields.io/badge/Docs-API%20Documentation%20Swagger-blue?style=for-the-badge)](https://github.com/shiningflash/django-reservation-system/blob/master/docs/api_documentation.md)
+[![API Documentation Insomnia](https://img.shields.io/badge/Docs-API%20Documentation%20Insomnia-blue?style=for-the-badge)](https://github.com/shiningflash/django-reservation-system/blob/master/docs/api_documentation_insomnia.json)
 
 ### Admin Management
 - **Register Admin**: `POST /api/account/register`
