@@ -36,19 +36,21 @@ Ensure the following are installed on your system:
     cd django-reservation-system
     ```
 
-2. Build and run the application using Docker:
+2. Copy the `.env.example` file and create a `.env` file, and adjust the values accordingly.
+
+3. Build and run the application using Docker:
 
     ```bash
     docker-compose up --build
     ```
 
-3. Access Swagger documentation:
+4. Access Swagger documentation:
     - [Swagger UI](http://localhost:8010/swagger/)
 
-4. Manage migrations:
+5. Manage migrations:
 
     ```bash
-    docker exec -it hotelbookingsystem_app_1 bash
+    docker exec -it reservationsystem_app_1 bash
     python3 manage.py makemigrations
     python3 manage.py migrate
     python3 manage.py createsuperuser
@@ -96,7 +98,7 @@ Ensure the following are installed on your system:
 To run the tests, execute:
 
 ```bash
-docker exec -it hotelbookingsystem_app_1 bash
+docker exec -it reservationsystem_app_1 bash
 python3 manage.py test
 ```
 
