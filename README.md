@@ -1,4 +1,4 @@
-# Hotel Booking System
+# Hotel Reservation System
 
 A Dockerized Hotel Reservation System built with Django, offering REST APIs for user management, room reservations, payments, and check-ins/check-outs. This project provides seamless Swagger and Insomnia documentation support for developers.
 
